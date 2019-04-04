@@ -1,6 +1,7 @@
 ﻿
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 using System.Collections.Generic;
 public class MovementController : MonoBehaviour
 {
@@ -10,10 +11,12 @@ public class MovementController : MonoBehaviour
 	GameObject FocusTarget;
 	Transform TargetPoint;
 	Transform point;
+	UnitStats CurrentFocus;
+	UnitStats TargetFocus;
+	public event System.Action OnAttack;
 	bool isCurrentlyAttacking = false;
 	void Update()
 	{
-
 		if (FocusTarget != null && TargetPoint != null)
 		{
 
@@ -22,11 +25,8 @@ public class MovementController : MonoBehaviour
 			if (distance <= agent.stoppingDistance)
 			{
 				setAttackSpeed();
-
 			}
 		}
-
-		
 		if (Input.GetMouseButtonDown(0))
 		{
 			Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -52,8 +52,10 @@ public class MovementController : MonoBehaviour
 				point = hit1.transform;
 				if (hit1.collider.tag == "team2")
 				{
-					Debug.Log("Chargeeeeeee");
+					Debug.Log("Attacking");
 					TargetPoint = hit1.transform;
+					CurrentFocus = FocusTarget.gameObject.GetComponent<UnitStats>();
+					TargetFocus = TargetPoint.gameObject.GetComponent<UnitStats>();
 					agent.SetDestination(TargetPoint.position);
 				}
 				else
@@ -74,14 +76,24 @@ public class MovementController : MonoBehaviour
 	{
 		if (TargetPoint.gameObject != null && !IsInvoking("attack"))
 		{
-			InvokeRepeating("attack", 0.0f, 1.0f);
+			InvokeRepeating("attack", 0.0f, FocusTarget.GetComponent<UnitStats>().attackspeed);
 		}
 
 	}
+
 	void attack()
-	{	
-		TargetPoint.gameObject.GetComponent<UnitStats>().takeDamage(FocusTarget.gameObject.GetComponent<UnitStats>().damage.getValue());
+	{
+		if (OnAttack != null) OnAttack();
+		if (TargetPoint != null) StartCoroutine(DoDamage(CurrentFocus, TargetFocus, CurrentFocus.attackDelay));
+
 	}
+
+	IEnumerator DoDamage(UnitStats Dealing, UnitStats Receiver, float delay)
+	{
+		yield return new WaitForSeconds(delay);
+		Receiver.takeDamage(Dealing.damage.getValue());
+	}
+
 
 	void faceTargetRay()
 	{

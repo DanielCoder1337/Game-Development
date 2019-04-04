@@ -13,12 +13,4 @@ public class Stat
 	{
 		return BaseValue;
 	}
-
-
-	//GameObject manager = GameObject.FindGameObjectWithTag("GameManager");
-	//private void Start()
-	//{
-	//	manager.GetComponent<MovementController>().lookRadius = LookRadius;
-	//}
-	
 }

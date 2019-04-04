@@ -144,14 +144,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0468be71964f7b47962918e8453c795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animation: {fileID: 0}
+  attackDelay: 0.6
+  attackspeed: 1
   heath:
     BaseValue: 100
   damage:
-    BaseValue: 25
+    BaseValue: 75
   energy:
-    BaseValue: 100
+    BaseValue: 0
   armor:
-    BaseValue: 50
+    BaseValue: 0
 --- !u!54 &732290
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -182,7 +185,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 1200
-  m_StoppingDistance: 2
+  m_StoppingDistance: 5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -328,10 +331,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0468be71964f7b47962918e8453c795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animation: {fileID: 5991976506917399463, guid: f6f0c154f6d179a4981bf3d24993ca3f,
+    type: 3}
+  attackDelay: 0.6
+  attackspeed: 1
   heath:
     BaseValue: 100
   damage:
-    BaseValue: 51
+    BaseValue: 75
   energy:
     BaseValue: 100
   armor:
@@ -501,7 +508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 49a0e923d39ec3c4c8bb97699e2f2903, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 59
+      value: 58.8
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 49a0e923d39ec3c4c8bb97699e2f2903, type: 3}
       propertyPath: m_LocalPosition.y
@@ -509,7 +516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 49a0e923d39ec3c4c8bb97699e2f2903, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 292
+      value: 298.4
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 49a0e923d39ec3c4c8bb97699e2f2903, type: 3}
       propertyPath: m_LocalRotation.x

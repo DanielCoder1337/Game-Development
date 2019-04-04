@@ -5,6 +5,11 @@ public class UnitStats : MonoBehaviour
 {
 	public int currentHeath { get; private set; }
 
+	public float attackDelay = .6f;
+
+	public ParticleSystem animation;
+
+	public float attackspeed;
 	public Stat heath;
 	public Stat damage;
 	public Stat energy;
@@ -14,17 +19,6 @@ public class UnitStats : MonoBehaviour
 	{
 		currentHeath = heath.getValue();
 	}
-
-
-	//private void Update()
-	//{
-	//	//test
-	//	if (Input.GetKeyDown("t"))
-	//	{
-	//		takeDamage(10);
-				
-	//	}
-	//}
 
 	public void takeDamage(int damage)
 	{
@@ -43,7 +37,11 @@ public class UnitStats : MonoBehaviour
 	public virtual void Die()
 	{
 		//Animation
+		//animation.transform.TransformPoint(gameObject.transform.position);
+		//animation.Play(true);
 		Destroy(gameObject);
 	}
-
 }
+
+
+
