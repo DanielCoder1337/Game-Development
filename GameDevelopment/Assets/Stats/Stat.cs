@@ -1,0 +1,24 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+[System.Serializable]
+public class Stat
+{	
+	[SerializeField]
+	private int BaseValue;
+
+	public int getValue()
+	{
+		return BaseValue;
+	}
+
+
+	//GameObject manager = GameObject.FindGameObjectWithTag("GameManager");
+	//private void Start()
+	//{
+	//	manager.GetComponent<MovementController>().lookRadius = LookRadius;
+	//}
+	
+}
