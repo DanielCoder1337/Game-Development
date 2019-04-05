@@ -22,10 +22,19 @@ public class MovementController : MonoBehaviour
 
 			float distance = Vector3.Distance(FocusTarget.transform.position, TargetPoint.position);
 
-			if (distance <= agent.stoppingDistance)
+			if (distance <= agent.stoppingDistance + 1)
 			{
 				setAttackSpeed();
 			}
+			else if (distance > agent.stoppingDistance)
+			{
+				Debug.Log("The distance is bigger than stopping distance " + distance);
+				if (IsInvoking("attack")) CancelInvoke("attack");
+				agent.SetDestination(TargetPoint.position);
+			}
+			//if we want to stop current attack totally and just attack once (in case the unit flies away duo to forces)
+			//	isCurrentlyAttacking = false;
+			//	if (IsInvoking("attack")) CancelInvoke("attack");
 		}
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -33,6 +42,7 @@ public class MovementController : MonoBehaviour
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit))
 			{
+				Debug.Log(hit.collider.tag);
 				if (hit.collider.tag == "Unit")
 				{
 					FocusTarget = hit.transform.gameObject;
@@ -84,15 +94,19 @@ public class MovementController : MonoBehaviour
 	void attack()
 	{
 		if (OnAttack != null) OnAttack();
-		if (TargetPoint != null) StartCoroutine(DoDamage(CurrentFocus, TargetFocus, CurrentFocus.attackDelay));
-
+		if (TargetFocus && CurrentFocus)
+		{
+			TargetFocus.takeDamage(CurrentFocus.damage.getValue());
+			CurrentFocus.animationSystem(TargetFocus.transform);
+		}
 	}
 
-	IEnumerator DoDamage(UnitStats Dealing, UnitStats Receiver, float delay)
-	{
-		yield return new WaitForSeconds(delay);
-		Receiver.takeDamage(Dealing.damage.getValue());
-	}
+	//IEnumerator DoDamage(UnitStats Dealing, UnitStats Receiver, float delay)
+	//{
+	//	yield return new WaitForSeconds(delay);
+	//	Receiver.takeDamage(Dealing.damage.getValue());
+	//	Dealing.animationSystem(TargetFocus.transform);
+	//}
 
 
 	void faceTargetRay()

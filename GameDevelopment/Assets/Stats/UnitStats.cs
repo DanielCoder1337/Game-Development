@@ -6,10 +6,8 @@ public class UnitStats : MonoBehaviour
 	public int currentHeath { get; private set; }
 
 	public float attackDelay = .6f;
-
-	public ParticleSystem animation;
-
-	public float attackspeed;
+	public GameObject EffectOnAttack;
+	public float attackspeed = 1f;
 	public Stat heath;
 	public Stat damage;
 	public Stat energy;
@@ -36,11 +34,14 @@ public class UnitStats : MonoBehaviour
 
 	public virtual void Die()
 	{
-		//Animation
-		//animation.transform.TransformPoint(gameObject.transform.position);
-		//animation.Play(true);
 		Destroy(gameObject);
 	}
+
+	public void animationSystem(Transform origin)
+	{
+		gameObject.GetComponent<HandleAttackEffect>().attackAnimation(origin,EffectOnAttack);
+	}
+
 }
 
 

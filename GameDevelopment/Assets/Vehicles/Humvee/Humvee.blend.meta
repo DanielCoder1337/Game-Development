@@ -3,6 +3,46 @@ guid: e00b076c430e2594a818d62907bebfee
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
+    100000: //RootNode
+    100002: Left_Wheel_1
+    100004: Left_Wheel_2
+    100006: Machine_Gun
+    100008: Machine_Gun_Mesh
+    100010: Machine_Gun_Pivot
+    100012: Right_Wheel_1
+    100014: Right_Wheel_2
+    400000: //RootNode
+    400002: Left_Wheel_1
+    400004: Left_Wheel_2
+    400006: Machine_Gun
+    400008: Machine_Gun_Mesh
+    400010: Machine_Gun_Pivot
+    400012: Right_Wheel_1
+    400014: Right_Wheel_2
+    2100000: Humvee_Material__Humvee_Albedo_png
+    2300000: //RootNode
+    2300002: Left_Wheel_1
+    2300004: Left_Wheel_2
+    2300006: Machine_Gun
+    2300008: Machine_Gun_Mesh
+    2300010: Right_Wheel_1
+    2300012: Right_Wheel_2
+    3300000: //RootNode
+    3300002: Left_Wheel_1
+    3300004: Left_Wheel_2
+    3300006: Machine_Gun
+    3300008: Machine_Gun_Mesh
+    3300010: Right_Wheel_1
+    3300012: Right_Wheel_2
+    4300000: Humvee
+    4300002: Machine_Gun
+    4300004: Machine_Gun_Mesh
+    4300006: Left_Wheel_1
+    4300008: Left_Wheel_2
+    4300010: Right_Wheel_1
+    4300012: Right_Wheel_2
+    7400000: Default Take
+    9500000: //RootNode
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
@@ -57,7 +97,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
